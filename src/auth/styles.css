@@ -1,0 +1,10 @@
+.user {
+	color: blue;
+	cursor: pointer;
+	text-decoration: underline;
+	user-select: none;
+}
+
+.link {
+	margin-right: 0.8rem;
+}

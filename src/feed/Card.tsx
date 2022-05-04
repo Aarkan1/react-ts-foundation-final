@@ -7,7 +7,7 @@ interface CardProps {
 }
 
 const Card = ({ title, image, size }: CardProps): JSX.Element => {
-	/**
+	/*
 	 * To handle the different cardSize, one approach is to create
 	 * an array of strings containing the classes. Fist only the 'Card'
 	 * class is added. Then depending on the size-prop we can
@@ -16,7 +16,7 @@ const Card = ({ title, image, size }: CardProps): JSX.Element => {
 	 * */
 	const classes = ["card"];
 
-	/** cardSize alternative 1 */
+	/* cardSize alternative 1 */
 	// if (size === "small") {
 	// 	classes.push("card-small");
 	// } else if (size === "large") {
@@ -25,7 +25,7 @@ const Card = ({ title, image, size }: CardProps): JSX.Element => {
 	// 	classes.push("card-medium");
 	// }
 
-	/** cardsize alternative 2
+	/* cardsize alternative 2
 	 * If you want to use the array-like syntax to get values from an
 	 * object the object must be of type [key: string]: any, or an object
 	 * that extends that type. My interface IIndexable is an example of that.

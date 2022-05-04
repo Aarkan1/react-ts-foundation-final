@@ -13,3 +13,14 @@ export interface ITodo {
 	title: string;
 	completed: boolean;
 }
+
+export interface ILink {
+	href: string;
+	name: string;
+}
+
+export interface IUser {
+	id: number;
+	name: string;
+	email: string;
+}

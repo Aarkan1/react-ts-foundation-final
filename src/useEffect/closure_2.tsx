@@ -7,7 +7,7 @@ import { useState, useRef } from "react";
 export const App = (): JSX.Element => {
 	const [count, setCount] = useState<number>(0);
 
-	/**
+	/*
 	 * Create a reference that will store the current value of count.
 	 * Note: The call to useRef only creates the reference once; upon
 	 * every subsequent render, the same reference is returned.
@@ -19,7 +19,7 @@ export const App = (): JSX.Element => {
 
 	const log = (): void => {
 		setTimeout(() => {
-			/**
+			/*
 			 * read the current value of count.
 			 *
 			 * NOTE: Compare with capturing count in closure_1.

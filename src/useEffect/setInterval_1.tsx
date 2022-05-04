@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const Counter = (): JSX.Element => {
 	const [count, setCount] = useState(0);
-	/**
+	/*
 	 * This effect runs only once, to setup a timer. It also returns a cleanup
 	 * function that is run if the component is unmounted (removed from the DOM)
 	 * or if any dependency changes. The problem is that the timer only updates
@@ -28,7 +28,7 @@ const Counter = (): JSX.Element => {
 		return () => clearInterval(handle);
 	}, []);
 
-	/**
+	/*
 	 * [count] would work here, but the timer is then created/destroyed every 1s.
 	 *
 	 * Why? Since the count variable is a dependency and its value changes upon every

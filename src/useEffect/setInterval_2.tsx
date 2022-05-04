@@ -9,7 +9,7 @@ const Counter = (): JSX.Element => {
 
 	useEffect(() => {
 		const handle = setInterval(() => {
-			/**
+			/*
 			 * use the callback version of setCount; the callback returns a new
 			 * count based on the previous count that is passed to it.
 			 */
@@ -20,7 +20,7 @@ const Counter = (): JSX.Element => {
 		return () => clearInterval(handle);
 	}, []);
 
-	/**
+	/*
 	 * Empty dependency array because the effect does not depend on the count
 	 * variable any more. The timer is therefore only created once.
 	 */

@@ -5,7 +5,7 @@ export const App = (): JSX.Element => {
 	// important: The count variable is different every time this component is rendered!
 	const [count, setCount] = useState<number>(0);
 
-	/**
+	/*
 	 * The log() function is created upon _every_ render. It captures the value of count
 	 * each time. E.g., if the count is incremented to 2, and the log button is then
 	 * pressed, the value count = 2 is captured and logged 3s later.
