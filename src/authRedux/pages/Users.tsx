@@ -1,24 +1,19 @@
 import { useState, useEffect } from "react";
 
-import User from "../components/User";
 import { IUser } from "../../interfaces";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { fetchUsersAsync, selectStatus, selectUsers } from "../usersSlice";
+import { useNavigate } from "react-router-dom";
 
 const Users = (): JSX.Element => {
 	const users = useAppSelector(selectUsers);
 	const status = useAppSelector(selectStatus);
 	const dispatch = useAppDispatch();
-	const [user, setUser] = useState<IUser | null>(null);
+	const navigate = useNavigate();
 
-	const handleOnClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
-		const target = e.target as HTMLSpanElement;
-		const id = target.id;
-		const clickedUser = users?.find((u) => u.id === +id);
-
-		if (clickedUser) {
-			setUser(clickedUser);
-		}
+	const goToUser = (id: number) => {
+		console.log(id);
+		navigate(`${id}`);
 	};
 
 	useEffect(() => {
@@ -38,7 +33,7 @@ const Users = (): JSX.Element => {
 						{users.map(({ id, name }) => (
 							<li key={id}>
 								<span
-									onClick={handleOnClick}
+									onClick={() => goToUser(id)}
 									id={id.toString()}
 									className="user"
 								>
@@ -47,7 +42,6 @@ const Users = (): JSX.Element => {
 							</li>
 						))}
 					</ul>
-					{user ? <User user={user} /> : ""}
 				</>
 			)}
 		</>

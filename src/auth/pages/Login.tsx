@@ -30,7 +30,10 @@ const Login = (): JSX.Element => {
 
 	return (
 		<>
-			<h1>Login</h1>
+			<h1>This is the login page!</h1>
+			<p>
+				Correct credentials is <strong>admin</strong>
+			</p>
 			<form onSubmit={handleSubmit}>
 				<input id="login" />
 			</form>

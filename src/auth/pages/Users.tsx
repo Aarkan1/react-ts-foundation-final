@@ -1,41 +1,33 @@
-import { useState, useEffect } from "react";
-
-import User from "../components/User";
-import { IUser } from "../../interfaces";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppContext } from "../AppProvider";
 
 const Users = (): JSX.Element => {
-	const [users, setUsers] = useState<IUser[] | null>(null);
-	const [user, setUser] = useState<IUser | null>(null);
+	const { fetchUsersAsync, users } = useAppContext();
+	const navigate = useNavigate();
 
-	const handleOnClick: React.MouseEventHandler<HTMLSpanElement> = (e) => {
-		const target = e.target as HTMLSpanElement;
-		const id = target.id;
-		const clickedUser = users?.find((u) => u.id === +id);
-
-		if (clickedUser) {
-			setUser(clickedUser);
-		}
+	const goToUser = (id: number) => {
+		/*
+		 * Remember that the path in react-router-dom v6 is always relative
+		 * to its parant path if it exists. This users page is already
+		 * linked to the path /users, so if you want to access the path
+		 * /users/:id the only thing you need to add in this component
+		 * is the /:id part. We don't even need the forward slash part...
+		 * React-reouter solves that for us. In this case it's the id that
+		 * we get from the user we clicked on.
+		 */
+		navigate(`${id}`);
 	};
 
 	useEffect(() => {
-		async function fetchUsers() {
-			const result = await fetch("https://jsonplaceholder.cypress.io/users");
-			const users = await result.json();
-
-			// We modify the users since we are only interested in id, name and email
-			const modifiedUsers: IUser[] = users.map((user: any) => {
-				return { id: user.id, name: user.name, email: user.email };
-			});
-
-			setUsers(modifiedUsers);
+		if (!users) {
+			fetchUsersAsync();
 		}
-
-		fetchUsers();
-	}, []);
+	}, [fetchUsersAsync, users]);
 
 	return (
 		<>
-			<h1>This is the Users page!</h1>
+			<h1>This is the users page!</h1>
 			{!users && <p>Loading users...</p>}
 			{users && (
 				<>
@@ -43,7 +35,7 @@ const Users = (): JSX.Element => {
 						{users.map(({ id, name }) => (
 							<li key={id}>
 								<span
-									onClick={handleOnClick}
+									onClick={() => goToUser(id)}
 									id={id.toString()}
 									className="user"
 								>
@@ -52,7 +44,6 @@ const Users = (): JSX.Element => {
 							</li>
 						))}
 					</ul>
-					{user ? <User user={user} /> : ""}
 				</>
 			)}
 		</>

@@ -7,6 +7,7 @@ import { store } from "./store";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Users from "./pages/Users";
+import User from "./components/User";
 import Navigation from "./components/Navigation";
 import NotFound from "./components/NotFound";
 import RouteGuard from "./components/RouteGuard";
@@ -31,6 +32,14 @@ const App = (): JSX.Element => {
 						element={
 							<RouteGuard>
 								<Users />
+							</RouteGuard>
+						}
+					/>
+					<Route
+						path="users/:id"
+						element={
+							<RouteGuard>
+								<User />
 							</RouteGuard>
 						}
 					/>

@@ -70,15 +70,13 @@ If you inspect the RouteGuard component, you'll see that it accesses the authent
 
 ## Optional
 
-_No solution exists for this optional_
-
 Now the _Users_ component renders a _User_ whenever we click on a name in the users-list. A different approach can be made here. _User_ is already its own component, the thing we could do is to give it its own route aswell, much like _Login_ and _Users_ already have. The challenge here is to render the same _User_ component but with different props depending on the name we click on. We need a couple of things in order to achieve this.
 
 - First we need to lift up the state of the _Users_ component (_i.e. the users-list_) to the context in order for _User_ component to access it. Make sure that the context also shares that state with the rest of the application.
 
-- Secondly, create a new route for the _User_ component. Check out the [docs](https://reactrouter.com/docs/en/v6/getting-started/overview#reading-url-parameters) for route parameters (_URL-parameters_), and how to access those parameters from within the components.
+- Secondly, create a new route for the _User_ component. Check out the [docs](https://reactrouter.com/docs/en/v6/getting-started/overview#reading-url-parameters) for route parameters (_URL-parameters_), and how to access those parameters from within the components. Also wrapp it in a _RouteGuard_ since we also want this to be protected from users that have not logged in.
 
-- Thirdly, when everything is set up it's time for the _User_ component to make sure that it displays the correct data depending on which name we clicked on in the _Users_ component. `Hint`: it involves using the **array.find()** method and the **useParams()** hook.
+- Thirdly, when everything is set up it's time for the _User_ component to make sure that it displays the correct data depending on which name we clicked on in the _Users_ component. This is easiest acheived inside the _User_ component, therefor it doesn't need to accept a prop anymore. `Hint`: it involves using the **array.find()** method and the **useParams()** hook.
 
 - Finally, add a back button so it's easy to get back to the _Users_ list.
 
