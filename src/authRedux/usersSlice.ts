@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { IUser } from "../interfaces";
-import { fetchUsers } from "./utils";
+import { fetchUsers } from "./services";
 
 interface IUsersState {
 	users: IUser[] | null;
